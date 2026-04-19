@@ -57,7 +57,7 @@ def preprocess_record(record: dict, stopwords: set[str], min_len: int) -> dict:
 
 # MapReduce Mrjob implementation
 
-class MRFullPipeline(MRJob):
+class MapReduce(MRJob):
     """Two-step MapReduce job to collect term frequencies and compute top terms by Chi-Square."""
     OUTPUT_PROTOCOL = RawValueProtocol
 
@@ -188,7 +188,7 @@ class MRFullPipeline(MRJob):
 
 if __name__ == "__main__":
     started = time.perf_counter()
-    MRFullPipeline.run()
+    MapReduce.run()
     elapsed = time.perf_counter() - started
     hours = int(elapsed // 3600)
     minutes = int((elapsed % 3600) // 60)
