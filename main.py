@@ -155,7 +155,7 @@ class MapReduce(MRJob):
                 self._cat_term_docs[category][term] += count
 
         merged_terms: set[str] = set()
-        # 1. Compute chi2 for each category-term pair and collect top K terms per category
+        # 1. Compute chi2 for each category-term pair
 
         for category in sorted(self._category_docs.keys()):
             cat_docs = self._category_docs[category]
@@ -181,7 +181,8 @@ class MapReduce(MRJob):
                 parts.append(f"{term}:{chi2:.6f}")
             yield None, " ".join(parts)
 
-        # 3. Sort all the collected top chi2 terms alphabetically
+        # 3. Collect all selected top-K terms across categories and sort them alphabetically
+        
         merged_line = " ".join(sorted(merged_terms))
         yield None, merged_line
 
