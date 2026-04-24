@@ -71,7 +71,7 @@ class MapReduce(MRJob):
 
     def steps(self) -> list[MRStep]:
         return [
-            MRStep(mapper_init=self.mapper_init, mapper=self.mapper, reducer=self.reducer),
+            MRStep(mapper_init=self.mapper_init, mapper=self.mapper, combiner=self.combiner, reducer=self.reducer),
             MRStep(
                 mapper=self.final_mapper,
                 reducer_init=self.final_reducer_init,
@@ -82,7 +82,7 @@ class MapReduce(MRJob):
 
     def mapper_init(self) -> None:
         self._stopwords = load_stopwords(Path(self.options.stopwords))
-        self._min_len = 1
+        self._min_len = 2
         self._top_k = 75
 
     def mapper(self, _, line: str) -> Iterable[tuple[str, int]]:
@@ -110,6 +110,10 @@ class MapReduce(MRJob):
         for term in unique_terms:
             yield f"TERM\t{term}", 1
             yield f"CATTERM\t{category}\t{term}", 1
+
+    def combiner(self, key: str, values: Iterable[int]) -> Iterable[tuple[str, int]]:
+        """Combine counts locally before the shuffle phase."""
+        yield key, sum(values)
 
     def reducer(self, key: str, values: Iterable[int]) -> Iterable[tuple[None, str]]:
         """Aggregate frequency counts (total docs, category frequencies, term-category pairs)."""
