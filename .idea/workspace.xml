@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9832ce8-a09f-4efc-afaf-c05eeba87a57" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Documentation/Assignment 1_Documentation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/Assignment 1_Documentation.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_pipeline.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_pipeline.sh" afterDir="false" />
-    </list>
+    <list default="true" id="a9832ce8-a09f-4efc-afaf-c05eeba87a57" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,7 +151,7 @@
       <workItem from="1777047092599" duration="2363000" />
       <workItem from="1777049898664" duration="1624000" />
       <workItem from="1777051601942" duration="3370000" />
-      <workItem from="1777115418923" duration="366000" />
+      <workItem from="1777115418923" duration="1863000" />
     </task>
     <servers />
   </component>
